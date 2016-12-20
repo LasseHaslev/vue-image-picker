@@ -1,15 +1,20 @@
 {
   "name": "@lassehaslev/vue-image-picker",
   "description": "Image picker using @lassehaslev/vue-item-picker",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "Lasse S. Haslev <lasse@haslev.no>",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lassehaslev/vue-image-picker.git"
+  },
+  "main": "src/index.js",
+  "private": false,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "@lassehaslev/vue-item-picker": "^0.0.1",
+    "@lassehaslev/vue-item-picker": "0.x",
     "vue": "^2.1.0"
   },
   "devDependencies": {
