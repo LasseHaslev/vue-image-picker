@@ -31,7 +31,7 @@ ref="imagePicker"></image-picker>
 
 
 
-## Build Setup
+## Development
 
 ``` bash
 # install dependencies
