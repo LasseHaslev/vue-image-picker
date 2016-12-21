@@ -13,8 +13,8 @@ export default {
                     <div class="columns is-mobile is-multiline">
                         <image-picker-item v-for="item in pickerItems" :selected="selectedItems" @confirm="confirm" @select="onItemSelect" :picker-item="item" :itemAdaptor="itemAdaptor"></image-picker-item>
                     </div>
-                    <button class="button is-primary" @click="confirm">Confirm</button>
-                    <button class="button is-default" @click="cancel">Cancel</button>
+                    <div class="button is-primary" @click="confirm">Confirm</div>
+                    <div class="button is-default" @click="cancel">Cancel</div>
                 </div>
             </div>
             <button class="modal-close" @click="close"></button>
