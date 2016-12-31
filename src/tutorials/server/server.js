@@ -28,7 +28,7 @@ app.get( '/api/images', function(req, res, next) {
                 images.push( buildImagesPath( file ) );
             }
         } )
-        res.send( images );
+        res.send( { data: images } );
     } );
 } );
 app.post( '/api/images', upload.single( 'image' ), function(req, res, next) {
