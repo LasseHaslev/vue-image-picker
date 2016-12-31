@@ -10,8 +10,8 @@
             </div>
         </section>
 
+        <upload-image-picker></upload-image-picker>
         <simple-image-picker></simple-image-picker>
-        <!--<multiple-image-picker></multiple-image-picker>-->
 
         <div class="hero is-primary">
             <div class="hero-body">
@@ -24,6 +24,7 @@
 
 <script>
 import SimpleImagePicker from './tutorials/SimpleImagePicker';
+import UploadImagePicker from './tutorials/UploadImagePicker';
 export default {
     name: 'app',
     data () {
@@ -32,6 +33,7 @@ export default {
     },
     components: {
         SimpleImagePicker,
+        UploadImagePicker,
     }
 }
 </script>
