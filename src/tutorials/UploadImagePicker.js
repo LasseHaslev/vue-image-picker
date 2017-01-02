@@ -56,11 +56,7 @@ export default {
             this.$refs.imagePicker.open();
         },
         imagesAdaptor( images ) {
-            return images.data.map( function( image ) {
-                return {
-                    url: image
-                }
-            } );
+            return images.data;
         },
         selectImage( image ) {
             this.selectedImage = image;

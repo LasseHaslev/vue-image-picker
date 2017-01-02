@@ -28,6 +28,13 @@ app.get( '/api/images', function(req, res, next) {
                 images.push( buildImagesPath( file ) );
             }
         } )
+
+        images = images.map( function( image ) {
+            return {
+                url: image,
+            }
+        } )
+
         res.send( { data: images } );
     } );
 } );
@@ -36,7 +43,7 @@ app.post( '/api/images', upload.single( 'image' ), function(req, res, next) {
     var name = req.file.originalname;
     fs.rename( req.file.path, 'uploads/' + name );
     // res.send( req.files );
-    res.send( { data: buildImagesPath( name ) } )
+    res.send( { data: { url: buildImagesPath( name ) } } )
 } );
 
 // start the server

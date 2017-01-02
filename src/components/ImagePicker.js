@@ -16,7 +16,7 @@ export default {
                     <slot>
                         <h4 class="title">Please select an image</h4>
                     </slot>
-                    <dropzone v-if="uploadUrl" :url="uploadUrl" name="image">
+                    <dropzone v-if="uploadUrl" :url="uploadUrl" name="image" @upload="onUpload">
         <div class="has-text-centered" style="
     padding: 32px;
     cursor:pointer;
@@ -26,7 +26,7 @@ export default {
         </div>
         </dropzone>
                     <div class="columns is-mobile is-multiline">
-                        <image-picker-item v-for="item in items" :selected="selectedItems" @confirm="confirm" @select="onItemSelect" :item="item"></image-picker-item>
+                        <image-picker-item v-for="item in items" :show-adaptor="showAdaptor" :selected="selectedItems" @confirm="confirm" @select="onItemSelect" :item="item"></image-picker-item>
                     </div>
                     <div class="button is-primary" @click="confirm">Confirm</div>
                     <div class="button is-default" @click="cancel">Cancel</div>
@@ -40,6 +40,13 @@ export default {
         url: {
             type: String,
             required: true,
+        },
+
+        'show-adaptor': {
+            type: Function,
+            default( item ) {
+                return item;
+            },
         }
     },
 
