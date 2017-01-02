@@ -33,8 +33,7 @@ export default {
                         <a @click="open" class="button is-primary is-large" href="#">Open image picker</a>
                     </div>
                     <image-picker url="http://localhost:1337/api/images"
-                    :items-adaptor="imagesAdaptor"
-                    :item-adaptor="imageAdaptor"
+                    :adaptor="imagesAdaptor"
                     :selected="selectedImage"
                     @confirm="selectImage"
                     ref="imagePicker"></image-picker>
@@ -56,18 +55,11 @@ export default {
             this.$refs.imagePicker.open();
         },
         imagesAdaptor( images ) {
-            // return images;
             return images.data.map( function( image ) {
                 return {
                     url: image
                 }
             } );
-        },
-        imageAdaptor( image ) {
-            return {
-                id: image.url,
-                url: image.url,
-            };
         },
         selectImage( image ) {
             this.selectedImage = image;
