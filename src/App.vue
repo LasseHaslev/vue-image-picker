@@ -10,6 +10,7 @@
             </div>
         </section>
 
+        <simple-image-picker></simple-image-picker>
         <upload-image-picker></upload-image-picker>
 
         <div class="hero is-primary">

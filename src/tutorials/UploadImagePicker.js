@@ -1,3 +1,4 @@
+import { Dropzone } from '@lassehaslev/vue-dropzone';
 import ImagePicker from '../index';
 export default {
     template: `
@@ -33,11 +34,16 @@ export default {
                         <a @click="open" class="button is-primary is-large" href="#">Open image picker</a>
                     </div>
                     <image-picker url="http://localhost:1337/api/images"
-                    upload-url="http://localhost:1337/api/images"
                     :adaptor="imagesAdaptor"
                     :selected="selectedImage"
                     @confirm="selectImage"
-                    ref="imagePicker"></image-picker>
+                    ref="imagePicker">
+    <dropzone url="http://localhost:1337/api/images" @upload="onUpload" @state-change="onStateChanged" name="image">
+        <div class="hero" :class="[ isHover ? 'is-warning' : 'is-info' ]">
+            <div class="hero-body has-text-centered"><span class="icon"><i class="fa fa-cloud-upload"></i></span> Drop files here to upload</div>
+        </div>
+    </dropzone>
+                    </image-picker>
                 </div>
             </section>
         </div>
@@ -47,6 +53,8 @@ export default {
         return{
 
             selectedImage: null,
+
+            isHover: false,
 
         }
     },
@@ -60,10 +68,18 @@ export default {
         },
         selectImage( image ) {
             this.selectedImage = image;
-        }
+        },
+
+        onStateChanged( state ) {
+            this.isHover = state;
+        },
+        onUpload( response ) {
+            this.$refs.imagePicker.add( response.data );
+        },
     },
 
     components: {
         ImagePicker,
+        Dropzone,
     }
 }
