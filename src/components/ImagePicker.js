@@ -1,7 +1,12 @@
 import BaseItemPicker from '@lassehaslev/vue-item-picker';
 import ImagePickerItem from './ImagePickerItem';
 import axios from 'axios';
+import { Dropzone } from '@lassehaslev/vue-dropzone';
+import HasDropzone from './mixins/HasDropzone';
 export default {
+
+    mixins: [ BaseItemPicker, HasDropzone ],
+
     template: `
         <div class="modal"
              :class="{ 'is-active': isShowingModal }">
@@ -11,6 +16,15 @@ export default {
                     <slot>
                         <h4 class="title">Please select an image</h4>
                     </slot>
+                    <dropzone v-if="uploadUrl" :url="uploadUrl" name="image">
+        <div class="has-text-centered" style="
+    padding: 32px;
+    cursor:pointer;
+    border: 2px dashed #ccc;
+    ">
+        <span class="icon"><i class="fa fa-cloud-upload"></i></span> Drop files here to upload
+        </div>
+        </dropzone>
                     <div class="columns is-mobile is-multiline">
                         <image-picker-item v-for="item in items" :selected="selectedItems" @confirm="confirm" @select="onItemSelect" :item="item"></image-picker-item>
                     </div>
@@ -22,13 +36,15 @@ export default {
         </div>
     `,
 
-    mixins: [ BaseItemPicker ],
-
     props: {
         url: {
             type: String,
             required: true,
         }
+    },
+
+    mounted() {
+        this.open();
     },
 
     methods: {
@@ -46,5 +62,6 @@ export default {
 
     components: {
         ImagePickerItem,
+        Dropzone,
     }
 }

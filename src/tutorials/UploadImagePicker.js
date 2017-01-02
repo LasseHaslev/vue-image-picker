@@ -33,6 +33,7 @@ export default {
                         <a @click="open" class="button is-primary is-large" href="#">Open image picker</a>
                     </div>
                     <image-picker url="http://localhost:1337/api/images"
+                    upload-url="http://localhost:1337/api/images"
                     :adaptor="imagesAdaptor"
                     :selected="selectedImage"
                     @confirm="selectImage"
