@@ -1,7 +1,7 @@
 {
   "name": "@lassehaslev/vue-image-picker",
   "description": "Image picker using @lassehaslev/vue-item-picker",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Lasse S. Haslev <lasse@haslev.no>",
   "repository": {
     "type": "git",
