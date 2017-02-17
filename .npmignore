@@ -5,3 +5,4 @@ src/main.js
 index.html
 .gitignore
 webpack.config.js
+yarn.lock
