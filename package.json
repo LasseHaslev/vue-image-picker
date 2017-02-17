@@ -12,7 +12,7 @@
   "scripts": {
     "serve": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
     "build": "rm -rf dist/ && mkdir dist && babel src --out-dir dist --ignore tutorials/,main.js",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
     "data-server": "nodemon  src/tutorials/server/server.js"
   },
   "dependencies": {
