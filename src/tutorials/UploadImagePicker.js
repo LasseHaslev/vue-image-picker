@@ -1,3 +1,4 @@
+import { Dropzone } from '@lassehaslev/vue-dropzone';
 import ImagePicker from '../index';
 export default {
     template: `
@@ -5,13 +6,10 @@ export default {
             <section class="section">
                 <div class="container">
                     <h3 class="title is-2">
-                        Image picker
+                        Dropzoned image picker
                     </h3>
-                    <h4 class="subtitle is-4">Open a image picker</h4>
-        <p>We have created a image picker with the logic of the @lassehaslev/vue-item-picker</p>
-
-        <br>
-
+                    <h4 class="subtitle is-4">Image picker with posibility to upload new images</h4>
+                    <br>
 
                 </div>
             </section>
@@ -35,11 +33,17 @@ export default {
                     <div class="has-text-centered">
                         <a @click="open" class="button is-primary is-large" href="#">Open image picker</a>
                     </div>
-                    <image-picker url="https://jsonplaceholder.typicode.com/photos?limit=10"
-                    :adaptor="imageAdaptor"
+                    <image-picker url="http://localhost:1337/api/images"
+                    :adaptor="imagesAdaptor"
                     :selected="selectedImage"
                     @confirm="selectImage"
-                    ref="imagePicker"></image-picker>
+                    ref="imagePicker">
+    <dropzone url="http://localhost:1337/api/images" @upload="onUpload" @state-change="onStateChanged" name="image">
+        <div class="hero" :class="[ isHover ? 'is-warning' : 'is-info' ]">
+            <div class="hero-body has-text-centered"><span class="icon"><i class="fa fa-cloud-upload"></i></span> Drop files here to upload</div>
+        </div>
+    </dropzone>
+                    </image-picker>
                 </div>
             </section>
         </div>
@@ -50,6 +54,8 @@ export default {
 
             selectedImage: null,
 
+            isHover: false,
+
         }
     },
 
@@ -57,16 +63,23 @@ export default {
         open() {
             this.$refs.imagePicker.open();
         },
-        imageAdaptor( images ) {
-            // return images;
-            return images.slice( 0, 20 );
+        imagesAdaptor( images ) {
+            return images.data;
         },
         selectImage( image ) {
             this.selectedImage = image;
-        }
+        },
+
+        onStateChanged( state ) {
+            this.isHover = state;
+        },
+        onUpload( response ) {
+            this.$refs.imagePicker.add( response.data );
+        },
     },
 
     components: {
         ImagePicker,
+        Dropzone,
     }
 }

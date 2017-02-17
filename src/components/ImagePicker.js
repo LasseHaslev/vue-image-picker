@@ -1,6 +1,10 @@
 import BaseItemPicker from '@lassehaslev/vue-item-picker';
 import ImagePickerItem from './ImagePickerItem';
+import axios from 'axios';
 export default {
+
+    mixins: [ BaseItemPicker ],
+
     template: `
         <div class="modal"
              :class="{ 'is-active': isShowingModal }">
@@ -11,7 +15,7 @@ export default {
                         <h4 class="title">Please select an image</h4>
                     </slot>
                     <div class="columns is-mobile is-multiline">
-                        <image-picker-item v-for="item in pickerItems" :selected="selectedItems" @confirm="confirm" @select="onItemSelect" :picker-item="item" :itemAdaptor="itemAdaptor"></image-picker-item>
+                        <image-picker-item v-for="item in items" :show-adaptor="showAdaptor" :selected="selectedItems" @confirm="confirm" @select="onItemSelect" :item="item"></image-picker-item>
                     </div>
                     <div class="button is-primary" @click="confirm">Confirm</div>
                     <div class="button is-default" @click="cancel">Cancel</div>
@@ -21,7 +25,32 @@ export default {
         </div>
     `,
 
-    mixins: [ BaseItemPicker ],
+    props: {
+        url: {
+            type: String,
+            required: true,
+        },
+
+        'show-adaptor': {
+            type: Function,
+            default( item ) {
+                return item;
+            },
+        }
+    },
+
+    methods: {
+        onModalOpen() {
+            this.loadImages();
+        },
+        loadImages() {
+            var self = this;
+            axios.get( this.url ).then( function( response ) {
+                self.removeAll();
+                self.add( response.data );
+            } );
+        }
+    },
 
     components: {
         ImagePickerItem,

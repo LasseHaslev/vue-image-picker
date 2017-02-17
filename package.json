@@ -1,7 +1,7 @@
 {
   "name": "@lassehaslev/vue-image-picker",
   "description": "Image picker using @lassehaslev/vue-item-picker",
-  "version": "0.1.2",
+  "version": "0.2.2",
   "author": "Lasse S. Haslev <lasse@haslev.no>",
   "repository": {
     "type": "git",
@@ -10,12 +10,15 @@
   "main": "dist/index.js",
   "private": false,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
+    "serve": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
     "build": "rm -rf dist/ && mkdir dist && babel src --out-dir dist --ignore tutorials/,main.js",
     "prepublish": "npm run build"
+    "data-server": "nodemon  src/tutorials/server/server.js"
   },
   "dependencies": {
-    "@lassehaslev/vue-item-picker": "0.x",
+    "@lassehaslev/vue-dropzone": "^1.0.1",
+    "@lassehaslev/vue-item-picker": "^0.1",
+    "axios": "^0.15.3",
     "vue": "^2.1.0"
   },
   "devDependencies": {
@@ -25,7 +28,11 @@
     "babel-preset-es2015": "^6.22.0",
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
+    "express": "^4.14.0",
     "file-loader": "^0.9.0",
+    "multer": "^1.2.1",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^3.1.2",
     "vue-loader": "^10.0.0",
     "vue-template-compiler": "^2.1.0",
     "webpack": "^2.1.0-beta.25",
