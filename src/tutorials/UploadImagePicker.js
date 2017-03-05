@@ -75,7 +75,13 @@ export default {
         },
         onUpload( response ) {
             var item = this.$refs.imagePicker.add( response.data );
-            this.$refs.imagePicker.select( item );
+            console.log(this.$refs.imagePicker.selectedItems);
+            if (
+                !this.$refs.imagePicker.selected ||
+                this.$refs.imagePicker.selected.length == 0
+            ) {
+                this.$refs.imagePicker.select( item );
+            }
         },
     },
 
