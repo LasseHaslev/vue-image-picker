@@ -8,6 +8,8 @@ var upload = multer({ dest: 'uploads/' })
 
 var fs = require( 'fs' );
 
+var uploadingCount = 0;
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -39,11 +41,18 @@ app.get( '/api/images', function(req, res, next) {
     } );
 } );
 app.post( '/api/images', upload.single( 'image' ), function(req, res, next) {
-    console.log(req.file);
-    var name = req.file.originalname;
-    fs.rename( req.file.path, 'uploads/' + name );
-    // res.send( req.files );
-    res.send( { data: { url: buildImagesPath( name ) } } )
+
+    uploadingCount++;
+    var delayTime = 1000;
+    setTimeout( function() {
+        uploadingCount--;
+        console.log(req.file);
+        var name = req.file.originalname;
+        fs.rename( req.file.path, 'uploads/' + name );
+        // res.send( req.files );
+        res.send( { data: { url: buildImagesPath( name ) } } )
+    }, delayTime * uploadingCount );
+
 } );
 
 // start the server
