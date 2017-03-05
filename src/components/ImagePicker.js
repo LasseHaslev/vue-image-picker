@@ -40,6 +40,9 @@ export default {
     },
 
     methods: {
+        select( item ) {
+            this.onItemSelect( item );
+        },
         onModalOpen() {
             this.loadImages();
         },

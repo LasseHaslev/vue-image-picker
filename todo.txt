@@ -1,0 +1,4 @@
+[ ] Preselect last uploaded image
+[ ] Show loading bar
+[ ] Give response if something fails
+[ ] Have function for creating custom image path

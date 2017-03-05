@@ -11,6 +11,7 @@
   "private": false,
   "scripts": {
     "serve": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
+    "dev": "npm-run-all --parallel serve data-server",
     "build": "rm -rf dist/ && mkdir dist && babel src --out-dir dist --ignore tutorials/,main.js",
     "prepublish": "npm run build",
     "data-server": "nodemon  src/tutorials/server/server.js"
