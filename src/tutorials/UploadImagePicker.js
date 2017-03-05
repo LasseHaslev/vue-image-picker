@@ -74,14 +74,7 @@ export default {
             this.isHover = state;
         },
         onUpload( response ) {
-            var item = this.$refs.imagePicker.add( response.data );
-            console.log(this.$refs.imagePicker.selectedItems);
-            if (
-                !this.$refs.imagePicker.selected ||
-                this.$refs.imagePicker.selected.length == 0
-            ) {
-                this.$refs.imagePicker.select( item );
-            }
+            this.$refs.imagePicker.uploaded( response.data );
         },
     },
 

@@ -40,6 +40,16 @@ export default {
     },
 
     methods: {
+        uploaded( item ) {
+            var item = this.add( item );
+            if (
+                !this.selected ||
+                this.selected.length == 0
+            ) {
+                this.select( item );
+            }
+            return item;
+        },
         select( item ) {
             this.onItemSelect( item );
         },
