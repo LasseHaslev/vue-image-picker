@@ -1,5 +1,4 @@
 import { ImageInput } from '../index';
-console.log(ImageInput);
 export default {
     template: `
         <div>

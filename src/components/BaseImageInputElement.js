@@ -36,7 +36,8 @@ export default {
     },
 
     mounted() {
-        this.selectedImage = this.value;
+        var newObject = JSON.parse( JSON.stringify( this.value ) );
+        this.selectedImage = newObject;
     },
 
     methods: {

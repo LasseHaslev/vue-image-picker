@@ -4,3 +4,6 @@
 [ ] Have function for creating custom image path
 Show uploading file
 Give response if not selected
+
+[ ] Fix multiple, so we dont reset next image when removing the one before on multiple input
+    Reproduce: by create and select new image, then remove the one before

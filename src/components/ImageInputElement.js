@@ -18,6 +18,7 @@ export default {
         <div class="has-text-centered">
             <a @click.prevent="selectImage(null)" class="button is-fullwidth is-warning" href="#">Remove image</a>
         </div>
+        <pre>{{ selectedImage }}</pre>
         <image-picker :url="url"
             :adaptor="adaptor"
             :selected="selectedImage"
