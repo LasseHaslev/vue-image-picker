@@ -4,27 +4,29 @@ export default {
     mixins: [ BaseImageInput ],
 
     template: `
-    <div>
-        <div style="padding-bottom: 100%"
-            @click="open"
-            :style="{
-                'background-image': selectedImage ? 'url(' + selectedImage.url + ')' : '',
-                'background-size':'contain',
-                'background-position':'center',
-                'background-repeat': 'no-repeat',
-                'background-color': '#ccc',
-                'cursor':'pointer',
-            }"></div>
-        <div class="has-text-centered">
-            <a @click.prevent="selectImage(null)" class="button is-fullwidth is-warning" href="#">Remove image</a>
+        <image-input-element :url="url" v-if="!multiple" :value="value" :adaptor="adaptor" :name="name" :value-adaptor="valueAdaptor"></image-input-element>
+        <div v-else class="columns is-mobile is-multiline">
+            <div v-for="( value, index ) in values_" :key="value.url" class="column is-2">
+                <image-input-element
+                    :url="url"
+                    @image-removed="removeImage( index )"
+                    :value="value"
+                    :adaptor="adaptor"
+                    :name="name + '[]'"
+                    :value-adaptor="valueAdaptor"
+                ></image-input-element>
+            </div>
+            <div class="column is-2">
+                <div style="padding-bottom: 100%"
+                    @click="addImage"
+                    :style="{
+                        'background-size':'contain',
+                        'background-position':'center',
+                        'background-repeat': 'no-repeat',
+                        'background-color': '#666',
+                        'cursor':'pointer',
+                    }"></div>
+            </div>
         </div>
-        <image-picker url="https://jsonplaceholder.typicode.com/photos?limit=10"
-            :adaptor="adaptor"
-            :selected="selectedImage"
-            @confirm="selectImage"
-            ref="imagePicker"></image-picker>
-
-        <input type="hidden" :name="name" :value="selectedImage ? valueAdaptor( selectedImage ) : ''">
-    </div>
     `,
 }

@@ -11,6 +11,7 @@
         </section>
 
             <single-image-input></single-image-input>
+            <multiple-image-input></multiple-image-input>
 
             <div class="hero is-primary">
                 <div class="hero-body">
@@ -23,6 +24,7 @@
 
 <script>
 import SingleImageInput from './tutorials/SingleImageInput';
+import MultipleImageInput from './tutorials/MultipleImageInput';
 export default {
     name: 'app',
     data () {
@@ -31,6 +33,7 @@ export default {
     },
     components: {
         SingleImageInput,
+        MultipleImageInput,
     }
 }
 </script>

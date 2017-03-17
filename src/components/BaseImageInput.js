@@ -1,43 +1,51 @@
-import ImagePicker from '@lassehaslev/vue-image-picker';
+import ImageInputElement from './ImageInputElement';
+import Props from './mixins/Props';
 export default {
 
+    mixins: [ Props ],
+
+    props: {
+        multiple: {
+            type: Boolean,
+            default: false,
+        },
+
+        values: {
+            type: Array,
+            default() {
+                return [];
+            }
+        },
+
+        value: {
+            type: Object,
+            default: null,
+        },
+    },
+
     data() {
-        return{
-
-            selectedImage: null,
-
+        return {
+            value_: null,
+            values_: [],
         }
     },
 
-    props: {
-        'adaptor': {
-            type: Function,
-            default( images ) {
-                return images;
-            },
-        },
-        name: {
-            type: String,
-            required: true,
-        },
-        'value-adaptor': {
-            type: Function,
-            default( value ) {
-                return value;
-            },
-        }
+    mounted() {
+        this.values_ = this.values;
+        this.value_ = this.value;
     },
 
     methods: {
-        open() {
-            this.$refs.imagePicker.open();
+        addImage() {
+            this.values_.push({});
         },
-        selectImage( image ) {
-            this.selectedImage = image;
-        },
+
+        removeImage( index ) {
+            this.values_.splice( index, 1 );
+        }
     },
 
     components: {
-        ImagePicker,
+        ImageInputElement,
     }
 }
