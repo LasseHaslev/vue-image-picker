@@ -17,9 +17,7 @@
     "data-server": "nodemon  src/tutorials/server/server.js"
   },
   "dependencies": {
-    "@lassehaslev/vue-dropzone": "^1.0.1",
-    "@lassehaslev/vue-item-picker": "^0.1",
-    "axios": "^0.15.3",
+    "@lassehaslev/vue-image-picker": "^0.3.0",
     "vue": "^2.1.0"
   },
   "devDependencies": {

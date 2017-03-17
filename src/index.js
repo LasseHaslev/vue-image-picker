@@ -1,8 +1,8 @@
-import ImagePicker from './components/ImagePicker';
-import ImagePickerItem from './components/ImagePickerItem';
+import BaseImageInput from './components/BaseImageInput';
+import ImageInput from './components/ImageInput';
 
-export default ImagePicker;
+export default BaseImageInput;
 export {
-    ImagePicker,
-    ImagePickerItem,
+    BaseImageInput,
+    ImageInput,
 }
