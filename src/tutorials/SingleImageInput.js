@@ -14,7 +14,7 @@ export default {
                     <div class="container">
                         <div class="columns is-mobile">
                             <div class="column is-2 is-offset-5">
-                                <image-input url="https://jsonplaceholder.typicode.com/photos?limit=10" :value="image" name="image" :adaptor="imageAdaptor" :value-adaptor="valueAdaptor"></image-input>
+                                <image-input url="https://jsonplaceholder.typicode.com/photos?limit=10" :value="image" name="image" :images-adaptor="imageAdaptor" :value-adaptor="valueAdaptor"></image-input>
                             </div>
                         </div>
                     </div>

@@ -4,7 +4,7 @@ export default {
     mixins: [ ImagePickerProps ],
      
     props: {
-        'adaptor': {
+        'images-adaptor': {
             type: Function,
             default( images ) {
                 return images;

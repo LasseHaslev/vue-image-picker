@@ -19,7 +19,7 @@ export default {
             <a @click.prevent="selectImage(null)" class="button is-fullwidth is-warning" href="#">Remove image</a>
         </div>
         <image-picker :url="url"
-            :adaptor="adaptor"
+            :adaptor="imagesAdaptor"
             :selected="selectedImage"
             @confirm="selectImage"
             ref="imagePicker"></image-picker>

@@ -13,12 +13,6 @@ export default {
     },
 
     props: {
-        'adaptor': {
-            type: Function,
-            default( images ) {
-                return images;
-            },
-        },
         name: {
             type: String,
             required: true,

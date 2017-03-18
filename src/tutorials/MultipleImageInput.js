@@ -12,7 +12,7 @@ export default {
             <section class="hero is-light">
                 <div class="hero-body">
                     <div class="container">
-                        <image-input :multiple="true" url="https://jsonplaceholder.typicode.com/photos?limit=10" :values="images" name="images" :adaptor="imageAdaptor" :value-adaptor="valueAdaptor"></image-input>
+                        <image-input :multiple="true" url="https://jsonplaceholder.typicode.com/photos?limit=10" :values="images" name="images" :images-adaptor="imageAdaptor" :value-adaptor="valueAdaptor"></image-input>
                     </div>
                 </div>
             </section>

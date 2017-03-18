@@ -11,22 +11,23 @@ This package uses [vue-resource](https://github.com/vuejs/vue-resource), so just
 ```js
 // Import vue
 import Vue from 'vue';
-// Make sure you add vue Resource
-import VueResource from 'vue-resource';
-Vue.use( VueResource );
-
-import ImagePicker from '@lassehaslev/vue-image-picker';
-Vue.use( 'image-picker', ImagePicker );
+import ImageInput from '@lassehaslev/vue-image-input';
+Vue.use( 'image-input', ImagePicker );
 ```
 
 #### Html
 ```html
-<image-picker url="https://jsonplaceholder.typicode.com/photos?limit=10"
-:items-adaptor="imagesAdaptor"
-:item-adaptor="imageAdaptor"
-:selected="selectedImage"
-@confirm="selectImage"
-ref="imagePicker"></image-picker>
+<image-input url="'/your/images/url/here'"
+    :images-adaptor="function( images ) {
+        return images;
+    }"
+    :value="{url:'/your/url/here'}"
+    name="image"
+    :multiple="false"
+    :value-adaptor="function( item ) {
+        return item.id;
+    }"
+></image-input>
 ```
 
 

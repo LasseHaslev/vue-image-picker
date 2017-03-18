@@ -1,11 +1,11 @@
 {
-  "name": "@lassehaslev/vue-image-picker",
-  "description": "Image picker using @lassehaslev/vue-item-picker",
+  "name": "@lassehaslev/vue-image-input",
+  "description": "Image input using @lassehaslev/vue-item-picker",
   "version": "0.3.0",
   "author": "Lasse S. Haslev <lasse@haslev.no>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lassehaslev/vue-image-picker.git"
+    "url": "git+https://github.com/lassehaslev/vue-image-input.git"
   },
   "main": "dist/index.js",
   "private": false,
