@@ -2,3 +2,5 @@
 [ ] Show loading bar
 [ ] Give response if something fails
 [ ] Have function for creating custom image path
+Show uploading file
+Give response if not selected
