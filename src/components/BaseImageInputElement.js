@@ -49,6 +49,8 @@ export default {
             if (!image) {
                 this.$emit( 'image-removed' );
             }
+
+            this.$emit( 'selected', image );
         },
     },
 

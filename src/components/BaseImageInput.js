@@ -37,11 +37,15 @@ export default {
 
     methods: {
         addImage() {
-            this.values_.push({});
+            this.values_.push({
+                url: '',
+            });
         },
 
         removeImage( index ) {
-            this.values_.splice( index, 1 );
+            this.$nextTick( function() {
+                this.values_.splice( index, 1 );
+            } );
         }
     },
 
