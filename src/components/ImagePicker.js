@@ -1,9 +1,7 @@
-import BaseItemPicker from '@lassehaslev/vue-item-picker';
-import ImagePickerItem from './ImagePickerItem';
-import axios from 'axios';
+import BaseImagePicker from './BaseImagePicker';
 export default {
 
-    mixins: [ BaseItemPicker ],
+    mixins: [ BaseImagePicker ],
 
     template: `
         <div class="modal"
@@ -11,9 +9,12 @@ export default {
             <div class="modal-background" @click="close"></div>
             <div class="modal-content">
                 <div class="box">
-                    <slot>
-                        <h4 class="title">Please select an image</h4>
-                    </slot>
+                    <dropzone v-if="dropzone" :url="dropzoneUrl" @upload="onUpload" @state-change="onStateChanged" :name="dropzoneName">
+                        <div class="hero" style="cursor:pointer;" :class="[ isHover ? 'is-warning' : 'is-info' ]">
+                            <div class="hero-body has-text-centered"><span class="icon"><i class="fa fa-cloud-upload"></i></span> Drop files here to upload</div>
+                        </div>
+                    </dropzone>
+                    <h4 v-else class="title">Please select an image</h4>
                     <div class="columns is-mobile is-multiline">
                         <image-picker-item v-for="item in items" :key="item.url" :show-adaptor="showAdaptor" :selected="selectedItems" @confirm="confirm" @select="onItemSelect" :item="item"></image-picker-item>
                     </div>
@@ -24,48 +25,4 @@ export default {
             <button class="modal-close" @click="close"></button>
         </div>
     `,
-
-    props: {
-        url: {
-            type: String,
-            required: true,
-        },
-
-        'show-adaptor': {
-            type: Function,
-            default( item ) {
-                return item;
-            },
-        }
-    },
-
-    methods: {
-        uploaded( item ) {
-            var item = this.add( item );
-            if (
-                !this.selected ||
-                this.selected.length == 0
-            ) {
-                this.select( item );
-            }
-            return item;
-        },
-        select( item ) {
-            this.onItemSelect( item );
-        },
-        onModalOpen() {
-            this.loadImages();
-        },
-        loadImages() {
-            var self = this;
-            axios.get( this.url ).then( function( response ) {
-                self.removeAll();
-                self.add( response.data );
-            } );
-        }
-    },
-
-    components: {
-        ImagePickerItem,
-    }
 }

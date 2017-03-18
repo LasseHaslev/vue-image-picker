@@ -1,6 +1,8 @@
-import { Dropzone } from '@lassehaslev/vue-dropzone';
 import ImagePicker from '../index';
 export default {
+
+      
+
     template: `
         <div>
             <section class="section">
@@ -37,12 +39,8 @@ export default {
                     :adaptor="imagesAdaptor"
                     :selected="selectedImage"
                     @confirm="selectImage"
+                    :dropzone="true"
                     ref="imagePicker">
-    <dropzone url="http://localhost:1337/api/images" @upload="onUpload" @state-change="onStateChanged" name="image">
-        <div class="hero" :class="[ isHover ? 'is-warning' : 'is-info' ]">
-            <div class="hero-body has-text-centered"><span class="icon"><i class="fa fa-cloud-upload"></i></span> Drop files here to upload</div>
-        </div>
-    </dropzone>
                     </image-picker>
                 </div>
             </section>
@@ -53,9 +51,6 @@ export default {
         return{
 
             selectedImage: null,
-
-            isHover: false,
-
         }
     },
 
@@ -80,6 +75,5 @@ export default {
 
     components: {
         ImagePicker,
-        Dropzone,
     }
 }
