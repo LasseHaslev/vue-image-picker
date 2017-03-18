@@ -3,6 +3,7 @@ import ImagePickerItem from './components/ImagePickerItem';
 
 import Props from './components/mixins/Props';
 import Dropzone from './components/mixins/Dropzone';
+import DropzoneProps from './components/mixins/DropzoneProps';
 
 export default ImagePicker;
 export {
@@ -10,4 +11,5 @@ export {
     ImagePickerItem,
     Props,
     Dropzone,
+    DropzoneProps,
 }

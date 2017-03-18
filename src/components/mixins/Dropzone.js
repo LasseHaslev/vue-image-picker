@@ -1,25 +1,8 @@
 import { Dropzone } from '@lassehaslev/vue-dropzone';
+import DropzoneProps from './DropzoneProps';
 export default {
 
-    props: {
-
-        dropzone: {
-            type:Boolean,
-            default: false,
-        },
-
-        'dropzone-url': {
-            type: String,
-            default() {
-                return this.url;
-            },
-        },
-
-        'dropzone-name': {
-            type: String,
-            default: 'image',
-        },
-    },
+    mixins: [ DropzoneProps ],
 
     data() {
         return{
@@ -34,10 +17,6 @@ export default {
         onUpload( response ) {
             this.uploaded( response.data );
         },
-    },
-
-    mounted() {
-        console.log(this.dropzoneUrl);
     },
 
     components: {
